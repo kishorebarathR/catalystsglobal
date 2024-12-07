@@ -13,16 +13,16 @@ const Header = () => {
   }
 
   return (
-    <header className="py-8 px-8 bg-black text-white">
+    <header className="py-7 px-10 bg-black text-white">
       <div className="flex">
-        <nav className="hidden md:flex space-x-10 items-center justify-center container mx-auto text-xl">
+        <nav className="hidden md:flex space-x-16 items-center justify-center container mx-auto text-[19.2px]">
           <Link href="/">
             <Image
               src="/catalyst-global-logo.6f016a59c010e128e74a746ca04c226d.svg"
               alt="Catalyst Foundation Logo"
               width={200}
               height={100}
-              className="space-x-6"
+              className=" w-full h-full"
             />
           </Link>
 
