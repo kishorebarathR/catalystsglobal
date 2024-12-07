@@ -138,7 +138,7 @@ const Organisations = () => {
           <p className="mt-4">
             Swasti – The Health Catalyst – was envisioned as an organisation to
             transform the lives of the marginalised communities by ensuring
-            their access to quality healthcare. Swasti's work has fuelled impact
+            their access to quality healthcare. Swasti&apos;s work has fuelled impact
             by promoting healthcare access thereby contributing to poverty
             alleviation. Swasti have supported governments, donors and
             development partners to design solutions in public health. Swasti
@@ -188,7 +188,7 @@ const Organisations = () => {
           <p className="text-xl ">(established in 2002)</p>
           <p className="mt-4">
             A registered Society (not-for-profit), Vrutti is a Livelihood Impact
-            Partner which enhances people's well-being through knowledge,
+            Partner which enhances people&apos;s well-being through knowledge,
             innovation and transformative actions and brings about solutions at
             a scale that eliminate inequities and create wealth for the
             marginalised. Vrutti is committed to finding solutions to end
@@ -349,7 +349,7 @@ const Organisations = () => {
             and choices; and establishing partnerships and collaborations.
           </p>
           <p className="mt-4">
-            Creating a positive impact on the workers' ecosystem by leveraging a
+            Creating a positive impact on the workers&apos; ecosystem by leveraging a
             systems change approach while ensuring knowledge, skills (personal
             and professional), and services (health and wealth) through a
             platform approach that aggregates solutions and providers.
