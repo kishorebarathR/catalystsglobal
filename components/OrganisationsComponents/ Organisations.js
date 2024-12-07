@@ -356,7 +356,7 @@ const Organisations = () => {
           </p>
 
           <Link
-            href="https://greenfoundation.in/"
+            href="https://upfront.global/"
             className="inline-block mt-6 px-4 py-2 md:w-1/4 w-1/2  text-center border border-black text-[#191D42] rounded-full underline"
             target="_blank"
           >
