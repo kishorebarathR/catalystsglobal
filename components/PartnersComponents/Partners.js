@@ -3,7 +3,7 @@ import {  corporatePartners,foundations,developments,social,universities,network
 
 const PartnersSection = () => {
   return (
-    <div className="bg-white py-8 ">
+    <div className="bg-white py-8 pt-36">
       {/* Corporate Partners Section */}
       <h2 className="text-3xl  text-center mb-6">Partners</h2>
       <p className="text-left text-gray-600 mb-8 lg:px-16 px-4">

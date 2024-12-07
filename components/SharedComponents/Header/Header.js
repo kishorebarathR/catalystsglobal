@@ -1,68 +1,99 @@
-"use client"
-import React, { useState, useEffect } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+"use client";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const pathname = usePathname()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (pathname === "/") {
+      const handleScroll = () => {
+        setIsScrolled(window.scrollY > 5);
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, [pathname]);
+
+  const linkClasses = () => {
+    if (pathname === "/organisations" || pathname === "/partners") {
+      return `block py-2 px-4 rounded text-white hover:text-red-500`;
+    }
+    return `block py-2 px-4 rounded ${
+      isScrolled ? "text-white" : "text-black"
+    } hover:text-red-500`;
+  };
 
   return (
-    <header className="py-7 px-10 bg-black text-white">
-      <div className="flex">
+    <header
+      className={`py-7 px-10 fixed w-full z-50 transition-colors duration-300 ${
+        pathname === "/"
+          ? isScrolled
+            ? "bg-black text-white"
+            : "bg-transparent text-black"
+          : pathname === "/organisations" || pathname === "/partners"
+          ? "bg-black text-white"
+          : "bg-white text-black"
+      }`}
+    >
+      <div className="flex items-center justify-between">
+        {/* First Logo - Hidden on Desktop */}
+        <Link href="/" className="block md:hidden">
+          <Image
+            src="/catalyst-global-logo.6f016a59c010e128e74a746ca04c226d.svg"
+            alt="Catalyst Foundation Logo"
+            width={200}
+            height={100}
+            className="w-auto h-auto"
+          />
+        </Link>
+
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-16 items-center justify-center container mx-auto text-[19.2px]">
-          <Link href="/">
+          {/* Second Logo - Hidden on Mobile */}
+          <Link href="/" className="hidden md:block">
             <Image
               src="/catalyst-global-logo.6f016a59c010e128e74a746ca04c226d.svg"
               alt="Catalyst Foundation Logo"
               width={200}
               height={100}
-              className=" w-full h-full"
+              className="w-auto h-auto"
             />
           </Link>
-
-          <Link
-            href="/"
-            className={`hover:text-red-500 ${
-              pathname === "/" ? "text-red-500" : "text-white"
-            }`}
-          >
+          <Link href="/" className={linkClasses()}>
             Home
           </Link>
-          <Link
-            href="/organisations"
-            className={`hover:text-red-500 ${
-              pathname === "/organisations" ? "text-red-500" : "text-white"
-            }`}
-          >
+          <Link href="/organisations" className={linkClasses()}>
             Organisations
           </Link>
-          <Link
-            href="/partners"
-            className={`hover:text-red-500 ${
-              pathname === "/partners" ? "text-red-500" : "text-white"
-            }`}
-          >
+          <Link href="/partners" className={linkClasses()}>
             Partners
           </Link>
-          <Link
+          <a
             href="https://communityactioncollab.org/"
             target="_blank"
             rel="noopener noreferrer"
-            className={`hover:text-red-500 text-white`}
+            className={linkClasses()}
           >
             Community Action Collab
-          </Link>
+          </a>
         </nav>
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden focus:outline-none text-white"
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
@@ -101,8 +132,8 @@ const Header = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 left-0 w-full h-full bg-black transform ${
-            isMenuOpen ? "translate-x-0" : "-translate-x-full"
+          className={`fixed top-0 right-0 w-full h-full bg-black transform ${
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
           } transition-transform duration-300 ease-in-out md:hidden`}
         >
           <div className="p-4">
@@ -181,7 +212,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -4,7 +4,7 @@ import Link from "next/link"
 const Organisations = () => {
   return (
     <div>
-      <p className="text-3xl text-center p-10">Our Organisations</p>
+      <p className="text-3xl text-center p-10 pt-36">Our Organisations</p>
       <div className="flex flex-col md:flex-row items-stretch h-auto mt-[0.5px]">
         {/* Left Column - Logo */}
         <div className="w-full md:w-1/4 flex justify-center items-center bg-[#622F88] p-8">
